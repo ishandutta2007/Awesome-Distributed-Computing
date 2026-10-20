@@ -1,0 +1,191 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 340" width="100%" height="340" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0d1a" />
+      <stop offset="50%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#1e1138" />
+    </linearGradient>
+
+    <!-- Glowing Line Gradient -->
+    <linearGradient id="lineGrad1" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.2" />
+      <stop offset="50%" stop-color="#818cf8" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#c084fc" stop-opacity="0.2" />
+    </linearGradient>
+
+    <linearGradient id="lineGrad2" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2dd4bf" stop-opacity="0.3" />
+      <stop offset="50%" stop-color="#3b82f6" stop-opacity="0.7" />
+      <stop offset="100%" stop-color="#a855f7" stop-opacity="0.2" />
+    </linearGradient>
+
+    <!-- Title Gradient -->
+    <linearGradient id="titleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="40%" stop-color="#67e8f9" />
+      <stop offset="80%" stop-color="#c084fc" />
+      <stop offset="100%" stop-color="#f472b6" />
+    </linearGradient>
+
+    <!-- Glow Filter -->
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <filter id="nodeGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="4" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <style>
+    @keyframes pulsePulse {
+      0%, 100% { transform: scale(1); opacity: 0.6; }
+      50% { transform: scale(1.15); opacity: 1; }
+    }
+    @keyframes orbitFloat {
+      0% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-8px) rotate(2deg); }
+      100% { transform: translateY(0px) rotate(0deg); }
+    }
+    @keyframes dashTravel {
+      to { stroke-dashoffset: -200; }
+    }
+    @keyframes glowPulse {
+      0%, 100% { opacity: 0.4; }
+      50% { opacity: 0.9; }
+    }
+    .node-anim-1 { animation: pulsePulse 4s infinite ease-in-out; transform-origin: 180px 100px; }
+    .node-anim-2 { animation: pulsePulse 5s infinite ease-in-out 1s; transform-origin: 1040px 110px; }
+    .node-anim-3 { animation: pulsePulse 4.5s infinite ease-in-out 2s; transform-origin: 980px 240px; }
+    .node-anim-4 { animation: pulsePulse 4s infinite ease-in-out 1.5s; transform-origin: 140px 230px; }
+    .stream-line {
+      stroke-dasharray: 8 12;
+      animation: dashTravel 12s linear infinite;
+    }
+    .floating-card {
+      animation: orbitFloat 6s ease-in-out infinite;
+    }
+    .text-title {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      font-weight: 800;
+      letter-spacing: -1px;
+    }
+    .text-subtitle {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      font-weight: 400;
+      letter-spacing: 0.5px;
+    }
+    .badge-pill {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      font-weight: 600;
+      font-size: 11px;
+      letter-spacing: 0.8px;
+    }
+  </style>
+
+  <!-- Background Base -->
+  <rect width="1200" height="340" fill="url(#bgGrad)" />
+
+  <!-- Distributed Mesh Topology Grid (Background Elements) -->
+  <g opacity="0.18">
+    <circle cx="180" cy="100" r="160" stroke="#38bdf8" stroke-width="1" fill="none" />
+    <circle cx="1040" cy="110" r="140" stroke="#c084fc" stroke-width="1" fill="none" />
+    <circle cx="600" cy="170" r="280" stroke="#818cf8" stroke-width="0.75" stroke-dasharray="4 6" fill="none" />
+  </g>
+
+  <!-- Animated Distributed Network Connections -->
+  <g stroke-width="1.5">
+    <path class="stream-line" d="M 140 230 Q 300 120, 600 170 T 1040 110" fill="none" stroke="url(#lineGrad1)" />
+    <path class="stream-line" d="M 180 100 Q 420 260, 600 170 T 980 240" fill="none" stroke="url(#lineGrad2)" />
+    <path class="stream-line" d="M 80 170 C 260 20, 480 80, 600 170 C 720 260, 940 320, 1120 170" fill="none" stroke="#6366f1" stroke-opacity="0.3" />
+  </g>
+
+  <!-- Distributed Computing Dynamic Cluster Nodes (Background & Flanks) -->
+  <g filter="url(#nodeGlow)">
+    <!-- Node Cluster Left -->
+    <circle cx="180" cy="100" r="7" fill="#38bdf8" class="node-anim-1" />
+    <circle cx="180" cy="100" r="16" fill="none" stroke="#38bdf8" stroke-width="1.5" opacity="0.4" />
+
+    <circle cx="140" cy="230" r="6" fill="#2dd4bf" class="node-anim-4" />
+    <circle cx="140" cy="230" r="14" fill="none" stroke="#2dd4bf" stroke-width="1.5" opacity="0.4" />
+
+    <circle cx="280" cy="160" r="4" fill="#818cf8" opacity="0.6" />
+
+    <!-- Node Cluster Right -->
+    <circle cx="1040" cy="110" r="7" fill="#c084fc" class="node-anim-2" />
+    <circle cx="1040" cy="110" r="16" fill="none" stroke="#c084fc" stroke-width="1.5" opacity="0.4" />
+
+    <circle cx="980" cy="240" r="6" fill="#f472b6" class="node-anim-3" />
+    <circle cx="980" cy="240" r="14" fill="none" stroke="#f472b6" stroke-width="1.5" opacity="0.4" />
+
+    <circle cx="880" cy="150" r="4" fill="#a855f7" opacity="0.6" />
+  </g>
+
+  <!-- Peripheral Tech Cluster Pills (Dynamic Floating Look, kept at the flanks so title remains crystal clear) -->
+  <g class="floating-card" opacity="0.85">
+    <!-- Left Pill: Ray / Dask -->
+    <rect x="70" y="55" width="115" height="28" rx="14" fill="#1e293b" stroke="#38bdf8" stroke-width="1" />
+    <circle cx="85" cy="69" r="4" fill="#38bdf8" />
+    <text x="96" y="73" fill="#e2e8f0" class="badge-pill">RAY • DASK</text>
+
+    <!-- Left Lower Pill: Multi-Node -->
+    <rect x="50" y="260" width="140" height="28" rx="14" fill="#1e293b" stroke="#2dd4bf" stroke-width="1" />
+    <circle cx="65" cy="274" r="4" fill="#2dd4bf" />
+    <text x="76" y="278" fill="#e2e8f0" class="badge-pill">PARALLEL PYTHON</text>
+
+    <!-- Right Pill: Spark / Flink -->
+    <rect x="1000" y="60" width="135" height="28" rx="14" fill="#1e293b" stroke="#c084fc" stroke-width="1" />
+    <circle cx="1015" cy="74" r="4" fill="#c084fc" />
+    <text x="1026" y="78" fill="#e2e8f0" class="badge-pill">SPARK • FLINK</text>
+
+    <!-- Right Lower Pill: Orchestration -->
+    <rect x="990" y="255" width="150" height="28" rx="14" fill="#1e293b" stroke="#f472b6" stroke-width="1" />
+    <circle cx="1005" cy="269" r="4" fill="#f472b6" />
+    <text x="1016" y="273" fill="#e2e8f0" class="badge-pill">CLOUD LAKEHOUSE</text>
+  </g>
+
+  <!-- Central Foreground Typography (Guaranteed Unobscured & High Contrast) -->
+  <g text-anchor="middle">
+    <!-- Top Super-Tag -->
+    <rect x="495" y="44" width="210" height="26" rx="13" fill="#1e1b4b" stroke="#818cf8" stroke-width="1.2" />
+    <text x="600" y="61" fill="#c7d2fe" class="badge-pill" text-anchor="middle">⚡ CLOUD &amp; DATA CLUSTERS</text>
+
+    <!-- Main Title -->
+    <text x="600" y="138" fill="url(#titleGrad)" class="text-title" font-size="44" filter="url(#glow)">AWESOME DISTRIBUTED COMPUTING</text>
+    <text x="600" y="138" fill="url(#titleGrad)" class="text-title" font-size="44">AWESOME DISTRIBUTED COMPUTING</text>
+
+    <!-- Subtitle Line 1 -->
+    <text x="600" y="184" fill="#f8fafc" class="text-subtitle" font-size="18" font-weight="600">
+      Curated Ecosystem of Scalable Infrastructure, Frameworks &amp; SaaS Platforms
+    </text>
+
+    <!-- Subtitle Line 2 / Feature Pills -->
+    <text x="600" y="218" fill="#94a3b8" class="text-subtitle" font-size="14">
+      Parallel Python • Cluster Orchestration • Distributed AI/LLM Serving • Petabyte Data Pipelines
+    </text>
+
+    <!-- Metrics / Tags Row -->
+    <g transform="translate(0, 246)">
+      <!-- Tag 1 -->
+      <rect x="360" y="0" width="130" height="26" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1" />
+      <text x="425" y="17" fill="#38bdf8" class="badge-pill">🚀 Open Source</text>
+
+      <!-- Tag 2 -->
+      <rect x="505" y="0" width="190" height="26" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1" />
+      <text x="600" y="17" fill="#a78bfa" class="badge-pill">🏢 Enterprise SaaS &amp; Cloud</text>
+
+      <!-- Tag 3 -->
+      <rect x="710" y="0" width="130" height="26" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1" />
+      <text x="775" y="17" fill="#34d399" class="badge-pill">📊 Verified Benchmarks</text>
+    </g>
+  </g>
+</svg>
